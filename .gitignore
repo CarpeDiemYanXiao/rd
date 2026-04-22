@@ -1,0 +1,11 @@
+# Keep repository minimal and safe for collaboration.
+# Ignore everything at root by default, then allow only required project files.
+*
+
+# Always keep git metadata files allowed
+!.gitignore
+!README.md
+
+# Core project source
+!EarnHFT-main/
+!EarnHFT-main/**
