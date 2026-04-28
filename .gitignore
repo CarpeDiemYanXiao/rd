@@ -9,3 +9,29 @@
 # Core project source
 !EarnHFT-main/
 !EarnHFT-main/**
+
+# Final experiment results & analysis
+!ALL_REAL_RESULTS.json
+!RESULTS_ANALYSIS.md
+!main_experiment_final_v2.json
+!ensemble_final_report.json
+!per_stock_crop_report.json
+!full_metrics.json
+
+# Result-producing scripts
+!consolidate_results.py
+!build_final_report.py
+!analyze_ensemble.py
+!analyze_full.py
+!per_stock_crop.py
+!ssh_cmd.py
+!_remote_ensemble_one.py
+!_remote_scan_all.py
+!_remote_dump_topk.py
+!_launch_ens.sh
+!_launch_ens2.sh
+!_poll2.sh
+
+# Raw ensemble outputs (small)
+!ensemble_v2/
+!ensemble_v2/**

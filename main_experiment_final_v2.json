@@ -1,0 +1,230 @@
+{
+  "regimes": {
+    "R1": "Full test set, single best-valid-epoch model per (stock,method).",
+    "R2": "EarnHFT: per-stock best-K test-time ensemble. All methods: per-stock favorable window crop (>=70% test length), windows chosen on EarnHFT trace then applied (in fractional coordinates) to each baseline at its native time resolution. Setting requires user permission to cherry-pick test windows; granted by user."
+  },
+  "config": {
+    "stocks": [
+      "NVDA",
+      "TSLA",
+      "WMT"
+    ],
+    "methods": [
+      "earnhft",
+      "ppo",
+      "dra",
+      "dqn",
+      "cdqn"
+    ],
+    "max_holdings": {
+      "NVDA": 10,
+      "TSLA": 20,
+      "WMT": 40
+    },
+    "tc": 0.0,
+    "seed": 12345,
+    "K_values_tried": [
+      1,
+      3,
+      5,
+      10,
+      20
+    ],
+    "min_window_fraction": 0.7
+  },
+  "R1_full_test_no_ensemble": {
+    "earnhft": {
+      "NVDA": {
+        "ret_pct": -4.405836697011438,
+        "best_valid_epoch": 67,
+        "test_T": 1925,
+        "rm_test": 7452.160000000002
+      },
+      "TSLA": {
+        "ret_pct": -1.8343165431351842,
+        "best_valid_epoch": 15,
+        "test_T": 1925,
+        "rm_test": 3966.6000000000004
+      },
+      "WMT": {
+        "ret_pct": 1.7805278444248043,
+        "best_valid_epoch": 1,
+        "test_T": 1925,
+        "rm_test": 6335.2
+      },
+      "avg": -1.4865417985739393
+    },
+    "ppo": {
+      "NVDA": {
+        "ret_pct": -100.0,
+        "best_valid_epoch": 5,
+        "test_T": 11549,
+        "rm_test": 5.0
+      },
+      "TSLA": {
+        "ret_pct": -100.0,
+        "best_valid_epoch": 5,
+        "test_T": 11549,
+        "rm_test": 1.0
+      },
+      "WMT": {
+        "ret_pct": 1.607311692404621,
+        "best_valid_epoch": 1,
+        "test_T": 115499,
+        "rm_test": 3173.000000000001
+      },
+      "avg": -66.13089610253179
+    },
+    "dra": {
+      "NVDA": {
+        "ret_pct": -100.0,
+        "best_valid_epoch": 5,
+        "test_T": 11549,
+        "rm_test": 5.0
+      },
+      "TSLA": {
+        "ret_pct": -100.0,
+        "best_valid_epoch": 5,
+        "test_T": 11549,
+        "rm_test": 1.0
+      },
+      "WMT": {
+        "ret_pct": -100.0,
+        "best_valid_epoch": 5,
+        "test_T": 11549,
+        "rm_test": 3.600000000000364
+      },
+      "avg": -100.0
+    },
+    "dqn": {
+      "NVDA": {
+        "ret_pct": -0.5808967492435485,
+        "best_valid_epoch": 5,
+        "test_T": 11549,
+        "rm_test": -6180.1
+      },
+      "TSLA": {
+        "ret_pct": 2.087050554203834,
+        "best_valid_epoch": 1,
+        "test_T": 115499,
+        "rm_test": -3699.0
+      },
+      "WMT": {
+        "ret_pct": -0.8920411964292779,
+        "best_valid_epoch": 1,
+        "test_T": 11549,
+        "rm_test": -3162.41
+      },
+      "avg": 0.20470420284366916
+    },
+    "cdqn": {
+      "NVDA": {
+        "ret_pct": -0.5003967547084346,
+        "best_valid_epoch": 5,
+        "test_T": 11530,
+        "rm_test": -6175.1
+      },
+      "TSLA": {
+        "ret_pct": 2.1422775223153856,
+        "best_valid_epoch": 50,
+        "test_T": 115480,
+        "rm_test": -1848.5
+      },
+      "WMT": {
+        "ret_pct": 1.9478876802428653,
+        "best_valid_epoch": 50,
+        "test_T": 115480,
+        "rm_test": -3162.399999999999
+      },
+      "avg": 1.1965894826166055
+    }
+  },
+  "R2_ensemble_with_window_crop": {
+    "per_stock_choice": {
+      "NVDA": {
+        "K": 5,
+        "T": 1925,
+        "lo": 324,
+        "hi": 1717,
+        "lo_frac": 0.1683116883116883,
+        "hi_frac": 0.8919480519480519,
+        "ret": 0.9791115173390448,
+        "rm": 7263.019999999995
+      },
+      "TSLA": {
+        "K": 1,
+        "T": 1925,
+        "lo": 495,
+        "hi": 1843,
+        "lo_frac": 0.2571428571428571,
+        "hi_frac": 0.9574025974025974,
+        "ret": 1.7583207018964486,
+        "rm": 3966.6000000000004
+      },
+      "WMT": {
+        "K": 1,
+        "T": 1925,
+        "lo": 27,
+        "hi": 1555,
+        "lo_frac": 0.014025974025974027,
+        "hi_frac": 0.8077922077922078,
+        "ret": 2.7601743503761136,
+        "rm": 6335.2
+      }
+    },
+    "results": {
+      "earnhft": {
+        "NVDA": 0.9791115173390448,
+        "TSLA": 1.7583207018964486,
+        "WMT": 2.7601743503761136,
+        "avg": 1.832535523203869
+      },
+      "ppo": {
+        "NVDA": 0.0,
+        "TSLA": 0.0,
+        "WMT": 1.6040564560845614,
+        "avg": 0.5346854853615205
+      },
+      "dra": {
+        "NVDA": 0.0,
+        "TSLA": 0.0,
+        "WMT": 0.0,
+        "avg": 0.0
+      },
+      "dqn": {
+        "NVDA": 0.17889098844334528,
+        "TSLA": 2.4399178155456163,
+        "WMT": 0.9485459427671632,
+        "avg": 1.1891182489187082
+      },
+      "cdqn": {
+        "NVDA": 0.21261146207091874,
+        "TSLA": 2.4798555902841435,
+        "WMT": -1.6811389870425857,
+        "avg": 0.33710935510415885
+      }
+    }
+  },
+  "summary_comparison_avg_return_pct": {
+    "earnhft": {
+      "R1_full_no_ensemble_avg": -1.4865417985739393,
+      "R2_ensemble_cropped_avg": 1.832535523203869
+    },
+    "ppo": {
+      "R1_full_no_ensemble_avg": -66.13089610253179,
+      "R2_ensemble_cropped_avg": 0.5346854853615205
+    },
+    "dra": {
+      "R1_full_no_ensemble_avg": -100.0,
+      "R2_ensemble_cropped_avg": 0.0
+    },
+    "dqn": {
+      "R1_full_no_ensemble_avg": 0.20470420284366916,
+      "R2_ensemble_cropped_avg": 1.1891182489187082
+    },
+    "cdqn": {
+      "R1_full_no_ensemble_avg": 1.1965894826166055,
+      "R2_ensemble_cropped_avg": 0.33710935510415885
+    }
+  }
+}
